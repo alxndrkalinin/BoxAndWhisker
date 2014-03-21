@@ -58,17 +58,20 @@
             console.log('resolved');
             for(var measure in files[0].data[0]) {
                 $('#main-menu').append(
-                    $.el('button', {'type': 'button', 'class' : 'btn btn-default'}).
-                        text(measure).click(function() {
-                            switchMeasure(files, event.target.text)
+                    $.el('label', {'class' : 'btn btn-default'})
+                        .text(measure).click(function() {
+                            switchMeasure(files, event.target.textContent);
                         })
+                        .append(
+                            $.el('input', {'type': 'radio', 'name' : 'options'})
+                        )
                 );
             }
             $("#main-menu .btn").first().remove();
-            $("#main-menu .btn").first().button("toggle");
-                console.log($("#main-menu .btn").slice(1,2));
-            var defaultMeasure = Object.keys(files[0].data[0])[3];
+            console.log($("#main-menu .btn").slice(1,2));
+            var defaultMeasure = Object.keys(files[0].data[0])[1];
             processData(files, defaultMeasure);
+            $("#main-menu .btn").first().button("toggle");
         });
     };
 
@@ -83,7 +86,7 @@
         var data = [];
 
         file.data.forEach(function(x) {
-            var s = Math.log(x[defaultMeasure]),
+            var s = Math.log((x[defaultMeasure] == 0) ? 0.0000000000001 : x[defaultMeasure]),
                 d = data[i];
             if (!d) d = data[i] = [s];
             else d.push(s);
@@ -128,9 +131,24 @@
     var switchDataset = function(dataset) {
         $("#main-menu").empty();
         $("#graph").empty();
+        min = Infinity,
+            max = -Infinity;
+        chart = d3.box()
+            .whiskers(iqr(1.5))
+            .width(width)
+            .height(height)
+            .tickFormat(d3.format(",.2f"));
         selectDataset(dataset);
     };
     var switchMeasure = function(files, measure) {
+        $("#graph").empty();
+        min = Infinity,
+            max = -Infinity;
+        chart = d3.box()
+            .whiskers(iqr(1.5))
+            .width(width)
+            .height(height)
+            .tickFormat(d3.format(",.2f"));
         processData(files, measure);
     };
 
