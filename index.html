@@ -21,18 +21,28 @@
 
 <div class="row">
     <div class="col-md-11 col-md-offset-1">
-        <h1>PC3 EPI vs. EMT cells morphometry analysis</h1>
+        <h1>Morphometry results Box-and-Whisker visualization</h1>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-11 col-md-offset-1">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default">AvgMeanCurvature</button>
-            <button type="button" class="btn btn-default">ComputeArea</button>
-            <button type="button" class="btn btn-default">Volume</button>
-            <button type="button" class="btn btn-default">ShapeIndex</button>
-            <button type="button" class="btn btn-default">Curvedness</button>
-            <button type="button" class="btn btn-default">FractalDimension</button>
+    <div class="col-md-2">
+        <div class="btn-group left-buffer top-buffer">
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                Available data
+                <span class="caret"></span>
+            </a>
+            <ul id="datasetList" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                <li><a tabindex="-1" href="#" class="highlight">Action</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <h3 id="datasetTitle">No data available.</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <div id="main-menu" class="btn-group">
         </div>
     </div>
 </div>
@@ -41,8 +51,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="graph">
+    <div class="col-md-10 col-md-offset-1 top-buffer">
+        <div id="graph">
             <!--graph goes here..-->
         </div>
     </div>
@@ -52,7 +62,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="js/box.js"></script>
-<script src="js/sy5y.js"></script>
+<script src="js/dataConfig.js"></script>
+<script src="js/boxwhisker.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 </body>

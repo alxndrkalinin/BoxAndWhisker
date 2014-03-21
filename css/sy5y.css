@@ -22,3 +22,6 @@ body {
     fill: none;
     stroke: #ccc;
 }
+
+.top-buffer { margin-top: 20px; }
+.left-buffer { margin-left: 20px; }
