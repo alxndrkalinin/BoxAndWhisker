@@ -13,7 +13,7 @@ var dataConfig = (function () {
     };
 
     var Sy5y_1k = {
-        title: 'S5y5 Diff/NoDiff vs Cort/Control vs 2D/3D (1k by 1k)',
+        title: 'S5y5 Diff/UnDiff vs Cort/Control vs 2D/3D (1k by 1k)',
         files: [
             'Sy5y_NoDiff_Control_2D_N32.csv',
             'Sy5y_NoDiff_Cort_2D_N33.csv',
@@ -34,9 +34,37 @@ var dataConfig = (function () {
         ]
     };
 
+    var Fibroblast_7k = {
+        title: 'Fibroblast 7k by 7k',
+        files: [
+            'Fibroblast_7k_N52.csv'
+        ]
+    };
+
+    var PC3_7k = {
+        title: 'PC3 EPI vs EMT (7k by 7k)',
+        files: [
+            'PC3_EPI_7k_567_cases.csv',
+            'PC3_EMT_7k_90_cases.csv'
+        ]
+    };
+
+    var S5y5_5k = {
+        title: 'Sy5y UnDiff: Cort/Control vs 2D/3D (5k by 5k)',
+        files: [
+            'Sy5y_NoDiff_Control_2D_5k_88_cases.csv',
+            'Sy5y_NoDiff_Control_3D_5k_39_cases.csv',
+            'Sy5y_NoDiff_Cort_2D_5k_90_cases.csv',
+            'Sy5y_NoDiff_Cort_3D_5k_59_cases.csv'
+        ]
+    };
+
     return {
 //        PC3_1k: PC3_1k
         Sy5y_1k : Sy5y_1k,
-        PC3_5k : PC3_5k
+        PC3_5k : PC3_5k,
+        Fibroblast_7k: Fibroblast_7k,
+        PC3_7k: PC3_7k,
+        S5y5_5k: S5y5_5k
     };
 })();

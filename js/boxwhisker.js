@@ -86,27 +86,13 @@
         var data = [];
 
         file.data.forEach(function(x) {
-            var s = Math.log((x[defaultMeasure] == 0) ? 0.0000000000001 : x[defaultMeasure]),
+            var s = Math.log((x[defaultMeasure] == 0) ? 0.0000000000001 : Math.abs(x[defaultMeasure])),
                 d = data[i];
             if (!d) d = data[i] = [s];
             else d.push(s);
             if (s > max) max = s;
             if (s < min) min = s;
         });
-
-//        console.log('max: ' + max);
-//        console.log('min: ' + min);
-//        console.log(height + margin.bottom + margin.top);
-//
-//        if(Math.abs(max - min) > 500) {
-//            data.map(Math.log);
-//            min = Math.log(min);
-//            max = Math.log(max);
-//        }
-
-        console.log('max: ' + max);
-        console.log('min: ' + min);
-        console.log(height + margin.bottom + margin.top);
 
         if(min == 0) min = 0.00000000000001;
 
@@ -121,16 +107,38 @@
             .data(data)
             .enter().append("svg")
             .attr("class", "box")
+            .attr("id", file.title)
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.bottom + margin.top)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .call(chart);
+
+        var label = file.fileName.replace('Sy5y ','').replace(/_/g, ' ').replace('No', 'Un');
+        label = label.substring(0, label.length - 4);
+
+        $('#footer').append(
+            $.el('label', {'class' : 'btn btn-default'})
+                .text(label)
+        );
+
+//        var plot = svg.select("text")
+//            .data(file.fileName)
+//            .enter()
+//            .append("text");
+//
+//        plot.text( function (d) { return d; })
+//            .attr("x", 0)
+//            .attr("y", 500)
+//            .attr("font-family", "sans-serif")
+//            .attr("font-size", "5px")
+//            .attr("fill", "red");
     };
 
     var switchDataset = function(dataset) {
         $("#main-menu").empty();
         $("#graph").empty();
+        $("#footer").empty();
         min = Infinity,
             max = -Infinity;
         chart = d3.box()
@@ -142,6 +150,7 @@
     };
     var switchMeasure = function(files, measure) {
         $("#graph").empty();
+        $("#footer").empty();
         min = Infinity,
             max = -Infinity;
         chart = d3.box()
