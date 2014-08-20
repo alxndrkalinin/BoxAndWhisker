@@ -59,12 +59,39 @@ var dataConfig = (function () {
         ]
     };
 
+    var PC3_combined = {
+        title: 'PC3 EPI vs EMT (combined dataset)',
+        files: [
+            'EPI_861_cases.csv',
+            'EMT_862_cases.csv'
+        ]
+    };
+
+    var PC3_blinded_72_vs_73 = {
+        title: 'PC3 blinded: runs 72 vs 73 ',
+        files: [
+            '05_31_14_6x6_B11R_N72.csv',
+            '05_31_14_6x6_BR7_N73.csv'
+        ]
+    };
+
+    var PC3_blinded_77_vs_81 = {
+        title: 'PC3 blinded: runs 77 vs 81 ',
+        files: [
+            '06_05_B11R_10x10_63x_2timesZoom_N77.csv',
+            '06_07_14_10x10_BR7_2xzoom_N81.csv'
+        ]
+    };
+
     return {
 //        PC3_1k: PC3_1k
         Sy5y_1k : Sy5y_1k,
         PC3_5k : PC3_5k,
         Fibroblast_7k: Fibroblast_7k,
         PC3_7k: PC3_7k,
-        S5y5_5k: S5y5_5k
+        S5y5_5k: S5y5_5k,
+        PC3_combined: PC3_combined,
+        PC3_blinded_72_vs_73: PC3_blinded_72_vs_73,
+        PC3_blinded_77_vs_81: PC3_blinded_77_vs_81
     };
 })();

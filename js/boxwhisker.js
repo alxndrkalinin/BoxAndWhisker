@@ -14,7 +14,7 @@
         .whiskers(iqr(1.5))
         .width(width)
         .height(height)
-        .tickFormat(d3.format(",.2f"));
+        .tickFormat(d3.format(",.3f"));
 
 
     // Define shorthand utility method for adding html elements
@@ -98,10 +98,9 @@
 
         if(chart.domain()) {
             var currDomain = chart.domain()();
-            if (min < currDomain[0]) currDomain[0] = min;
-            if (max > currDomain[1]) currDomain[1] = max;
-        } else
-            chart.domain([min, max]);
+            if (min > currDomain[0]) min = currDomain[0];
+            if (max < currDomain[1]) max = currDomain[1];
+        }
 
         var svg = d3.select("#graph").selectAll("svg")
             .data(data)
@@ -113,6 +112,8 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .call(chart);
+
+        chart.domain([min, max]);
 
         var label = file.fileName.replace('Sy5y ','').replace(/_/g, ' ').replace('No', 'Un');
         label = label.substring(0, label.length - 4);
@@ -145,7 +146,7 @@
             .whiskers(iqr(1.5))
             .width(width)
             .height(height)
-            .tickFormat(d3.format(",.2f"));
+            .tickFormat(d3.format(",.3f"));
         selectDataset(dataset);
     };
     var switchMeasure = function(files, measure) {
@@ -157,7 +158,7 @@
             .whiskers(iqr(1.5))
             .width(width)
             .height(height)
-            .tickFormat(d3.format(",.2f"));
+            .tickFormat(d3.format(",.3f"));
         processData(files, measure);
     };
 
