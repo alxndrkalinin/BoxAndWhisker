@@ -83,6 +83,32 @@ var dataConfig = (function () {
         ]
     };
 
+    var PC3_blinded_72_vs_77 = {
+        title: 'PC3 blinded: runs 72 vs 77 ',
+        files: [
+            '05_31_14_6x6_B11R_N72.csv',
+            '06_05_B11R_10x10_63x_2timesZoom_N77.csv'
+        ]
+    };
+
+    var PC3_blinded_73_vs_81 = {
+        title: 'PC3 blinded: runs 73 vs 81 ',
+        files: [
+            '05_31_14_6x6_BR7_N73.csv',
+            '06_07_14_10x10_BR7_2xzoom_N81.csv'
+        ]
+    };
+
+    var S5y5_slides5678 = {
+        title: 'Slides 5 6 7 8',
+        files: [
+            'slide5dist.csv',
+            'slide6dist.csv',
+            'slide7dist.csv',
+            'slide8dist.csv'
+        ]
+    };
+
     return {
 //        PC3_1k: PC3_1k
         Sy5y_1k : Sy5y_1k,
@@ -92,6 +118,9 @@ var dataConfig = (function () {
         S5y5_5k: S5y5_5k,
         PC3_combined: PC3_combined,
         PC3_blinded_72_vs_73: PC3_blinded_72_vs_73,
-        PC3_blinded_77_vs_81: PC3_blinded_77_vs_81
+        PC3_blinded_77_vs_81: PC3_blinded_77_vs_81,
+        PC3_blinded_72_vs_77: PC3_blinded_72_vs_77,
+        PC3_blinded_73_vs_81: PC3_blinded_73_vs_81,
+        S5y5_slides5678: S5y5_slides5678
     };
 })();
