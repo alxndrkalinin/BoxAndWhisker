@@ -11,5 +11,6 @@ while read -r line; do
 			line="${line#*[[:space:]]}";
 			line="$index $line"
 	fi;
+	line="${line//[[:space:]]/,}"
 	echo $line;
-done < "$1" >> "$2"
+done < "$1" | sort -n | uniq >> "$2"
